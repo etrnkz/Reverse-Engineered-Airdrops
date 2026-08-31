@@ -26,10 +26,6 @@ try {
   }
 } catch {}
 
-function pathJoin(...segments) {
-  return segments.reduce((a, b) => a ? a + '/' + b : b, '');
-}
-
 function request(options) {
   return new Promise((resolve, reject) => {
     const parsed = new URL(options.url);

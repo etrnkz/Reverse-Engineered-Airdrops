@@ -16,20 +16,16 @@ CLI tool to automatically claim ad rewards on MonsterLand Telegram Mini App.
 ## Usage
 
 ```bash
-# Interactive (prompts for initData)
 node ad-reward-client.js
-
-# Or set env var
-MONSTERLAND_INITDATA="user=...&auth_date=..." node ad-reward-client.js
 ```
+
+The script always prompts for fresh initData (tokens expire).
 
 ## Files
 
 - `ad-reward-client.js` — Main CLI script
 - `api/ads-create.js` — Backend: create ad task endpoint
 - `api/ads-result.js` — Backend: check ad task result endpoint
-- `captured_traffic.json` — Captured API traffic for analysis
-- `api_analysis.md` — Full API endpoint documentation
 
 ## Auth
 
