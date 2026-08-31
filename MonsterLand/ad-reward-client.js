@@ -22,16 +22,7 @@ let INIT_DATA = '';
 
 // ─── LOAD AUTH ───────────────────────────────────────────────────────
 function loadAuth() {
-  // 1. Check env var
-  if (process.env.MONSTERLAND_INITDATA) {
-    INIT_DATA = process.env.MONSTERLAND_INITDATA;
-    return true;
-  }
-  // 2. Check .auth_token file
-  try {
-    const t = fs.readFileSync(path.join(__dirname, '.auth_token'), 'utf-8').trim();
-    if (t) { INIT_DATA = t; return true; }
-  } catch {}
+  // Tokens expire - always prompt user for fresh initData
   return false;
 }
 
