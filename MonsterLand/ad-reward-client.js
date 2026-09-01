@@ -20,12 +20,7 @@ const RAW_HASH = 'bd3e37d9805298e49a38dacd2058742a37fab7888ea1a633d6c6bc8095c87b
 // ─── STATE ───────────────────────────────────────────────────────────
 let INIT_DATA = '';
 
-// ─── LOAD AUTH ───────────────────────────────────────────────────────
-function loadAuth() {
-  // Tokens expire - always prompt user for fresh initData
-  return false;
-}
-
+────────
 // ─── PROMPT ──────────────────────────────────────────────────────────
 function promptInitData() {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
