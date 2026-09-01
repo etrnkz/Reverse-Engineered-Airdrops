@@ -318,24 +318,19 @@ MonsterLand Ad Reward Client v3
 
 Usage:
   node ad-reward-client.js
-  MONSTERLAND_INITDATA="user=...&auth_date=..." node ad-reward-client.js
 
-Auth:
-  - MONSTERLAND_INITDATA env var: Telegram initData string
-    Format: "user=<url-encoded JSON>&auth_date=<unix-timestamp>"
-  - .auth_token file: same format as MONSTERLAND_INITDATA
+The script always prompts for fresh initData.
+Paste your tgWebAppData value when prompted.
 
 Flow: create-task → sse-token → adsgram → abandon → fallback → events → check → complete
 `);
     process.exit(0);
   }
 
-  if (!loadAuth()) {
-    INIT_DATA = await promptInitData();
-    if (!INIT_DATA) {
-      console.error('ERROR: No initData provided');
-      process.exit(1);
-    }
+  INIT_DATA = await promptInitData();
+  if (!INIT_DATA) {
+    console.error('ERROR: No initData provided');
+    process.exit(1);
   }
 
   const result = await runAdRewardFlow();
