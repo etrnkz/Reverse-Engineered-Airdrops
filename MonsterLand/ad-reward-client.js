@@ -21,12 +21,26 @@ const RAW_HASH = 'bd3e37d9805298e49a38dacd2058742a37fab7888ea1a633d6c6bc8095c87b
 let INIT_DATA = '';
 
 // ─── PROMPT ──────────────────────────────────────────────────────────
+function extractInitData(input) {
+  const url = new URL(input);
+  const hash = url.hash.substring(1);
+  const parts = hash.split('&');
+  for (const part of parts) {
+    if (part.startsWith('tgWebAppData=')) {
+      return part.substring('tgWebAppData='.length);
+    }
+  }
+  return input.trim();
+}
 function promptInitData() {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   return new Promise(resolve => {
     rl.question('\n🔥 Paste MonsterLand initData (from tgWebAppData=...):\n> ', (ans) => {
       rl.close();
-      resolve(ans.trim());
+      const raw = ans.trim();
+      const initData = extractInitData(raw);
+      if (initData !== raw) console.log('  Extracted initData from URL');
+      resolve(initData);
     });
   });
 }
