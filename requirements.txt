@@ -3,3 +3,4 @@ pycryptodome
 pyfiglet
 colorama
 user-agent
+crypto
